@@ -116,7 +116,9 @@ include_directories(contrib/multichoose)
 include_directories(contrib/filevercmp)
 include_directories(contrib/c-progress-bar)
 
-if(NOT HTSLIB_FOUND)
+if(HTSLIB_FOUND)
+  include_directories(${HTSLIB_INCLUDE_DIRS})
+else()
   set(HTSLIB_LOCAL contrib/tabixpp/htslib)
   set(TABIX_FOUND OFF) # also build tabixpp if htslib is missing
 endif()
